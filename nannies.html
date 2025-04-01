@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>SafiriCare | Find Nannies</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <style>
+    .profile-image {
+      width: 80px;
+      height: 80px;
+      min-width: 80px;
+    }
+    .modal {
+      transition: all 0.3s ease;
+    }
+    .modal-overlay {
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+  </style>
+    </head>
+    <body class="bg-gray-50">
+        <!-- Navigation -->
+        <nav class="bg-white shadow-sm">
+            <div
+                class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+                <a href="index.html"
+                    class="text-xl font-bold text-blue-800 flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-1"
+                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                    </svg>
+                    SafiriCare
+                </a>
+                <div>
+                    <a href="index.html"
+                        class="px-4 py-2 bg-blue-800 text-white rounded-lg hover:bg-blue-900 transition-colors">
+                        Return Home
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <section
+            class="bg-gradient-to-r from-blue-800 to-blue-600 text-white py-16 md:py-24">
+            <div class="max-w-6xl mx-auto px-4 text-center">
+                <h1 class="text-3xl md:text-5xl font-bold mb-6">Find Your
+                    Perfect Nanny</h1>
+                <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
+                    Trusted, experienced childcare professionals who become part
+                    of your family
+                </p>
+                <div
+                    class="flex flex-col sm:flex-row gap-4 justify-center max-w-lg mx-auto">
+                    <input
+                        type="text"
+                        placeholder="Search by location or language..."
+                        class="px-5 py-3 rounded-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-300">
+                    <button
+                        class="bg-yellow-400 hover:bg-yellow-300 text-blue-900 px-6 py-3 rounded-lg font-semibold transition-colors">
+                        Search Nannies
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Content -->
+        <main class="max-w-7xl mx-auto px-4 py-12">
+            <!-- Filter Bar -->
+            <div
+                class="flex flex-col md:flex-row justify-between items-center mb-8 bg-white p-4 rounded-lg shadow-sm">
+                <h2 class="text-xl font-semibold text-gray-800 mb-4 md:mb-0">
+                    Available Nannies <span class="text-blue-600">(24)</span>
+                </h2>
+                <div class="flex items-center space-x-4">
+                    <span class="text-sm text-gray-600">Sort by:</span>
+                    <select
+                        class="border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-300">
+                        <option>Highest Rating</option>
+                        <option>Most Experienced</option>
+                        <option>Price: Low to High</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Nanny Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Nanny Card 1 -->
+                <div
+                    class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                    <div class="p-6">
+                        <div class="flex items-start space-x-4">
+                            <img
+                                src="https://randomuser.me/api/portraits/women/43.jpg"
+                                alt="Nanny Sarah"
+                                class="profile-image rounded-full object-cover border-2 border-blue-200">
+                            <div>
+                                <h3
+                                    class="text-xl font-bold text-gray-800">Sarah
+                                    M.</h3>
+                                <p class="text-gray-600 text-sm">5 years
+                                    experience</p>
+                                <div class="flex items-center mt-1">
+                                    <span
+                                        class="text-green-600 font-bold mr-1">4.9</span>
+                                    <div class="flex text-yellow-400">
+                                        ★★★★★
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="mt-4 text-gray-600">
+                            "I specialize in newborn care and early childhood development. Certified in CPR and first aid."
+                        </p>
+                        <div class="mt-6 flex justify-between items-center">
+                            <span
+                                class="text-lg font-semibold text-blue-800">R150/hour</span>
+                            <button
+                                onclick="openModal('sarahModal')"
+                                class="px-4 py-2 bg-blue-100 text-blue-800 rounded-lg hover:bg-blue-200 transition-colors view-profile-btn">
+                                View Profile
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Nanny Card 2 -->
+                <div
+                    class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                    <div class="p-6">
+                        <div class="flex items-start space-x-4">
+                            <img
+                                src="https://randomuser.me/api/portraits/women/65.jpg"
+                                alt="Nanny Thandi"
+                                class="profile-image rounded-full object-cover border-2 border-blue-200">
+                            <div>
+                                <h3
+                                    class="text-xl font-bold text-gray-800">Thandi
+                                    N.</h3>
+                                <p class="text-gray-600 text-sm">8 years
+                                    experience</p>
+                                <div class="flex items-center mt-1">
+                                    <span
+                                        class="text-green-600 font-bold mr-1">4.8</span>
+                                    <div class="flex text-yellow-400">
+                                        ★★★★☆
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="mt-4 text-gray-600">
+                            "Multilingual nanny (English, Zulu, Xhosa) with special needs care experience."
+                        </p>
+                        <div class="mt-6 flex justify-between items-center">
+                            <span
+                                class="text-lg font-semibold text-blue-800">R180/hour</span>
+                            <button
+                                onclick="openModal('thandiModal')"
+                                class="px-4 py-2 bg-blue-100 text-blue-800 rounded-lg hover:bg-blue-200 transition-colors view-profile-btn">
+                                View Profile
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Nanny Card 3 -->
+                <div
+                    class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                    <div class="p-6">
+                        <div class="flex items-start space-x-4">
+                            <img
+                                src="https://randomuser.me/api/portraits/women/32.jpg"
+                                alt="Nanny Amina"
+                                class="profile-image rounded-full object-cover border-2 border-blue-200">
+                            <div>
+                                <h3
+                                    class="text-xl font-bold text-gray-800">Amina
+                                    K.</h3>
+                                <p class="text-gray-600 text-sm">3 years
+                                    experience</p>
+                                <div class="flex items-center mt-1">
+                                    <span
+                                        class="text-green-600 font-bold mr-1">4.7</span>
+                                    <div class="flex text-yellow-400">
+                                        ★★★★☆
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="mt-4 text-gray-600">
+                            "Early education specialist who makes learning fun through play-based activities."
+                        </p>
+                        <div class="mt-6 flex justify-between items-center">
+                            <span
+                                class="text-lg font-semibold text-blue-800">R120/hour</span>
+                            <button
+                                onclick="openModal('aminaModal')"
+                                class="px-4 py-2 bg-blue-100 text-blue-800 rounded-lg hover:bg-blue-200 transition-colors view-profile-btn">
+                                View Profile
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Modal Template -->
+        <div id="modalOverlay"
+            class="fixed inset-0 z-50 modal-overlay hidden"></div>
+
+        <!-- Sarah's Modal -->
+        <div id="sarahModal"
+            class="fixed inset-0 z-50 flex items-center justify-center p-4 modal hidden">
+            <div
+                class="bg-white rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+                <div class="relative">
+                    <!-- Header -->
+                    <div class="bg-blue-800 text-white p-6 rounded-t-xl">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h2 class="text-2xl font-bold">Sarah M.</h2>
+                                <p class="text-blue-200">Professional Nanny
+                                    since 2018</p>
+                            </div>
+                            <button onclick="closeModal()"
+                                class="text-white hover:text-blue-200">
+                                <svg class="w-6 h-6" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round"
+                                        stroke-linejoin="round" stroke-width="2"
+                                        d="M6 18L18 6M6 6l12 12"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Body -->
+                    <div class="p-6">
+                        <div class="flex flex-col md:flex-row gap-6 mb-6">
+                            <img
+                                src="https://randomuser.me/api/portraits/women/43.jpg"
+                                alt="Sarah M."
+                                class="w-32 h-32 rounded-full object-cover border-4 border-blue-100 mx-auto md:mx-0">
+                            <div>
+                                <div class="flex items-center mb-2">
+                                    <span
+                                        class="text-green-600 font-bold text-xl mr-2">4.9</span>
+                                    <div class="flex text-yellow-400">
+                                        ★★★★★
+                                    </div>
+                                    <span class="text-gray-600 ml-2">(24
+                                        reviews)</span>
+                                </div>
+                                <div class="space-y-2">
+                                    <p><span class="font-semibold">Age:</span>
+                                        32</p>
+                                    <p><span
+                                            class="font-semibold">Languages:</span>
+                                        English, Afrikaans</p>
+                                    <p><span class="font-semibold">Rate:</span>
+                                        R150/hour</p>
+                                    <p><span
+                                            class="font-semibold">Availability:</span>
+                                        Weekdays 7am-6pm</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="space-y-6">
+                            <div>
+                                <h3
+                                    class="text-xl font-bold text-gray-800 mb-3">About
+                                    Me</h3>
+                                <p class="text-gray-600">
+                                    With 5 years of professional experience, I
+                                    specialize in newborn care and early
+                                    childhood development. I'm certified in
+                                    pediatric CPR and first aid, and I believe
+                                    in creating a nurturing environment where
+                                    children can learn through play.
+                                </p>
+                            </div>
+
+                            <div>
+                                <h3
+                                    class="text-xl font-bold text-gray-800 mb-3">Experience</h3>
+                                <ul class="space-y-3">
+                                    <li class="flex items-start">
+                                        <svg
+                                            class="h-5 w-5 text-green-500 mt-0.5 mr-2 flex-shrink-0"
+                                            fill="none" viewBox="0 0 24 24"
+                                            stroke="currentColor">
+                                            <path stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M5 13l4 4L19 7"></path>
+                                        </svg>
+                                        <span>3 years at Little Sprouts Daycare
+                                            (Ages 0-3)</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <svg
+                                            class="h-5 w-5 text-green-500 mt-0.5 mr-2 flex-shrink-0"
+                                            fill="none" viewBox="0 0 24 24"
+                                            stroke="currentColor">
+                                            <path stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M5 13l4 4L19 7"></path>
+                                        </svg>
+                                        <span>2 years private nanny for twin
+                                            toddlers</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div>
+                                <h3
+                                    class="text-xl font-bold text-gray-800 mb-3">Certifications</h3>
+                                <div class="flex flex-wrap gap-2">
+                                    <span
+                                        class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">CPR
+                                        Certified</span>
+                                    <span
+                                        class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">First
+                                        Aid</span>
+                                    <span
+                                        class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Early
+                                        Childhood Development</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- Footer -->
+                <div class="p-6 border-t border-gray-200 flex justify-end">
+                    <button
+                        class="px-6 py-3 bg-blue-800 text-white rounded-lg hover:bg-blue-900 transition-colors">
+                        Book Sarah
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Repeat similar modals for Thandi and Amina with their details -->
+    <!-- Thandi's Modal -->
+    <div id="thandiModal"
+        class="fixed inset-0 z-50 flex items-center justify-center p-4 modal hidden">
+        <div
+            class="bg-white rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="relative">
+                <!-- Header -->
+                <div
+                    class="bg-blue-800 text-white p-6 rounded-t-xl">
+                    <div
+                        class="flex justify-between items-start">
+                        <div>
+                            <h2
+                                class="text-2xl font-bold">Thandi
+                                N.</h2>
+                            <p
+                                class="text-blue-200">Professional
+                                Nanny since 2015</p>
+                        </div>
+                        <button onclick="closeModal()"
+                            class="text-white hover:text-blue-200">
+                            <svg class="w-6 h-6" fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M6 18L18 6M6 6l12 12"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Body -->
+                <div class="p-6">
+                    <div
+                        class="flex flex-col md:flex-row gap-6 mb-6">
+                        <img
+                            src="https://randomuser.me/api/portraits/women/65.jpg"
+                            alt="Thandi N."
+                            class="w-32 h-32 rounded-full object-cover border-4 border-blue-100 mx-auto md:mx-0">
+                        <div>
+                            <div class="flex items-center mb-2">
+                                <span
+                                    class="text-green-600 font-bold text-xl mr-2">4.8</span>
+                                <div
+                                    class="flex text-yellow-400">
+                                    ★★★★☆
+                                </div>
+                                <span
+                                    class="text-gray-600 ml-2">(18
+                                    reviews)</span>
+                            </div>
+                            <div class="space-y-2">
+                                <p><span
+                                        class="font-semibold">Age:</span>
+                                    35</p>
+                                <p><span
+                                        class="font-semibold">Languages:</span>
+                                    English, Zulu, Xhosa</p>
+                                <p><span
+                                        class="font-semibold">Rate:</span>
+                                    R180/hour</p>
+                                <p><span
+                                        class="font-semibold">Availability:</span>
+                                    Flexible hours</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-6">
+                        <div>
+                            <h3
+                                class="text-xl font-bold text-gray-800 mb-3">About
+                                Me</h3>
+                            <p class="text-gray-600">
+                                With 8 years of experience
+                                caring for children of all ages,
+                                I specialize in multilingual
+                                households and children with
+                                special needs. I believe in
+                                creating an inclusive
+                                environment where every child
+                                feels valued.
+                            </p>
+                        </div>
+
+                        <div>
+                            <h3
+                                class="text-xl font-bold text-gray-800 mb-3">Experience</h3>
+                            <ul class="space-y-3">
+                                <li class="flex items-start">
+                                    <svg
+                                        class="h-5 w-5 text-green-500 mt-0.5 mr-2 flex-shrink-0"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke="currentColor">
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    <span>5 years at Rainbow
+                                        Inclusive Daycare</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <svg
+                                        class="h-5 w-5 text-green-500 mt-0.5 mr-2 flex-shrink-0"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke="currentColor">
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    <span>3 years private nanny
+                                        for special needs
+                                        child</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <h3
+                                class="text-xl font-bold text-gray-800 mb-3">Special
+                                Skills</h3>
+                            <div class="flex flex-wrap gap-2">
+                                <span
+                                    class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Special
+                                    Needs Care</span>
+                                <span
+                                    class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Multilingual</span>
+                                <span
+                                    class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Therapeutic
+                                    Play</span>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h3
+                                class="text-xl font-bold text-gray-800 mb-3">References</h3>
+                            <div
+                                class="bg-gray-50 p-4 rounded-lg">
+                                <p
+                                    class="italic text-gray-600 mb-2">"Thandi cared for our autistic son for 2 years with incredible patience and skill."</p>
+                                <p class="font-semibold">- The
+                                    Mthembu Family</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer -->
+                <div
+                    class="p-6 border-t border-gray-200 flex justify-end">
+                    <button
+                        class="px-6 py-3 bg-blue-800 text-white rounded-lg hover:bg-blue-900 transition-colors">
+                        Book Thandi
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Amina's Modal -->
+<div id="aminaModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 modal hidden">
+    <div class="bg-white rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+        <div class="relative">
+            <!-- Header -->
+            <div class="bg-blue-800 text-white p-6 rounded-t-xl">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <h2 class="text-2xl font-bold">Amina K.</h2>
+                        <p class="text-blue-200">Professional Nanny since 2022</p>
+                    </div>
+                    <button onclick="closeModal()" class="text-white hover:text-blue-200">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Body -->
+            <div class="p-6">
+                <div class="flex flex-col md:flex-row gap-6 mb-6">
+                    <img src="https://randomuser.me/api/portraits/women/32.jpg" 
+                         alt="Amina K." 
+                         class="w-32 h-32 rounded-full object-cover border-4 border-blue-100 mx-auto md:mx-0">
+                    <div>
+                        <div class="flex items-center mb-2">
+                            <span class="text-green-600 font-bold text-xl mr-2">4.7</span>
+                            <div class="flex text-yellow-400">★★★★☆</div>
+                            <span class="text-gray-600 ml-2">(12 reviews)</span>
+                        </div>
+                        <div class="space-y-2">
+                            <p><span class="font-semibold">Age:</span> 28</p>
+                            <p><span class="font-semibold">Languages:</span> English, Arabic</p>
+                            <p><span class="font-semibold">Rate:</span> R120/hour</p>
+                            <p><span class="font-semibold">Availability:</span> Weekdays & Weekends</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">About Me</h3>
+                        <p class="text-gray-600">
+                            I'm an early education specialist with 3 years of experience. I focus on creating engaging, play-based learning experiences that help children develop both academically and socially.
+                        </p>
+                    </div>
+
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Experience</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <svg class="h-5 w-5 text-green-500 mt-0.5 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span>2 years at Sunshine Preschool</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="h-5 w-5 text-green-500 mt-0.5 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span>1 year private tutoring</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Specialties</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Early Education</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Art & Crafts</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Basic Arabic</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="p-6 border-t border-gray-200 flex justify-end">
+                <button class="px-6 py-3 bg-blue-800 text-white rounded-lg hover:bg-blue-900 transition-colors">
+                    Book Amina
+                </button>
+            </div>
+        </div>
+    </div>
+</div>    
+
+    <!-- script for opening and closing modals -->
+    <script>
+    function openModal(modalId) {
+      document.getElementById('modalOverlay').classList.remove('hidden');
+      document.getElementById(modalId).classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      document.getElementById('modalOverlay').classList.add('hidden');
+      document.querySelectorAll('.modal').forEach(modal => {
+        modal.classList.add('hidden');
+      });
+      document.body.style.overflow = 'auto';
+    }
+
+    // Close modal when clicking overlay
+    document.getElementById('modalOverlay').addEventListener('click', closeModal);
+
+    // Prevent modal1 from closing when clicking inside
+    document.querySelectorAll('.modal').forEach(modal => {
+      modal.addEventListener('click', (e) => e.stopPropagation());
+    });
+  </script>
+        <!-- Add this before the closing </body> tag -->
+    <footer class="bg-blue-800 text-white mt-16">
+        <div class="max-w-7xl mx-auto px-4 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div>
+                    <h3 class="text-xl font-bold mb-4 flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                        </svg>
+                        SafiriCare
+                    </h3>
+                    <p class="text-blue-200 mb-4">Connecting families with trusted childcare professionals since 2023.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-blue-200 hover:text-white">
+                            <span class="sr-only">Facebook</span>
+                            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M18.77,16.39H15.7V24H11.93V16.39H9.71V13.06H11.93V10.74C11.93,7.41 13.42,6 16.37,6H19V9.33H17.27C16.07,9.33 15.7,9.98 15.7,11.02V13.06H19L18.77,16.39Z"/></svg>
+                        </a>
+                        <a href="#" class="text-blue-200 hover:text-white">
+                            <span class="sr-only">Instagram</span>
+                            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12,2.16C15.13,2.16 15.51,2.17 16.68,2.23C17.85,2.29 18.53,2.49 19.13,2.77C19.75,3.07 20.28,3.47 20.79,3.98C21.3,4.49 21.7,5.02 22,5.64C22.28,6.24 22.48,6.92 22.54,8.09C22.6,9.26 22.61,9.64 22.61,12.77C22.61,15.9 22.6,16.28 22.54,17.45C22.48,18.62 22.28,19.3 22,19.9C21.7,20.52 21.3,21.05 20.79,21.56C20.28,22.07 19.75,22.47 19.13,22.77C18.53,23.05 17.85,23.25 16.68,23.31C15.51,23.37 15.13,23.38 12,23.38C8.87,23.38 8.49,23.37 7.32,23.31C6.15,23.25 5.47,23.05 4.87,22.77C4.25,22.47 3.72,22.07 3.21,21.56C2.7,21.05 2.3,20.52 2,19.9C1.72,19.3 1.52,18.62 1.46,17.45C1.4,16.28 1.39,15.9 1.39,12.77C1.39,9.64 1.4,9.26 1.46,8.09C1.52,6.92 1.72,6.24 2,5.64C2.3,5.02 2.7,4.49 3.21,3.98C3.72,3.47 4.25,3.07 4.87,2.77C5.47,2.49 6.15,2.29 7.32,2.23C8.49,2.17 8.87,2.16 12,2.16M12,0C8.74,0 8.33,0.01 7.05,0.07C5.78,0.13 4.9,0.33 4.14,0.63C3.35,0.93 2.66,1.34 2.07,1.93C1.48,2.52 1.07,3.21 0.77,4C0.47,4.76 0.27,5.64 0.21,6.91C0.15,8.19 0.14,8.6 0.14,11.86C0.14,15.12 0.15,15.53 0.21,16.81C0.27,18.08 0.47,18.96 0.77,19.72C1.07,20.51 1.48,21.2 2.07,21.79C2.66,22.38 3.35,22.79 4.14,23.09C4.9,23.39 5.78,23.59 7.05,23.65C8.33,23.71 8.74,23.72 12,23.72C15.26,23.72 15.67,23.71 16.95,23.65C18.22,23.59 19.1,23.39 19.86,23.09C20.65,22.79 21.34,22.38 21.93,21.79C22.52,21.2 22.93,20.51 23.23,19.72C23.53,18.96 23.73,18.08 23.79,16.81C23.85,15.53 23.86,15.12 23.86,11.86C23.86,8.6 23.85,8.19 23.79,6.91C23.73,5.64 23.53,4.76 23.23,4C22.93,3.21 22.52,2.52 21.93,1.93C21.34,1.34 20.65,0.93 19.86,0.63C19.1,0.33 18.22,0.13 16.95,0.07C15.67,0.01 15.26,0 12,0Z"/></svg>
+                        </a>
+                        <a href="#" class="text-blue-200 hover:text-white">
+                            <span class="sr-only">Twitter</span>
+                            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M22.46,6C21.69,6.35 20.86,6.58 20,6.69C20.88,6.16 21.56,5.32 21.88,4.31C21.05,4.81 20.13,5.16 19.16,5.36C18.37,4.5 17.26,4 16,4C13.65,4 11.73,5.92 11.73,8.29C11.73,8.63 11.77,8.96 11.84,9.27C8.28,9.09 5.11,7.38 3,4.79C2.63,5.42 2.42,6.16 2.42,6.94C2.42,8.43 3.17,9.75 4.33,10.5C3.62,10.5 2.96,10.3 2.38,10C2.38,10 2.38,10 2.38,10.03C2.38,12.11 3.86,13.85 5.82,14.24C5.46,14.34 5.08,14.39 4.69,14.39C4.42,14.39 4.15,14.36 3.89,14.31C4.43,16 6,17.26 7.89,17.29C6.43,18.45 4.58,19.13 2.56,19.13C2.22,19.13 1.88,19.11 1.54,19.07C3.44,20.29 5.7,21 8.12,21C16,21 20.33,14.46 20.33,8.79C20.33,8.6 20.33,8.42 20.32,8.23C21.16,7.63 21.88,6.87 22.46,6Z"/></svg>
+                        </a>
+                    </div>
+                </div>
+    
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-blue-200 hover:text-white">Find a Nanny</a></li>
+                        <li><a href="#" class="text-blue-200 hover:text-white">Become a Nanny</a></li>
+                        <li><a href="#" class="text-blue-200 hover:text-white">Pricing</a></li>
+                        <li><a href="#" class="text-blue-200 hover:text-white">How It Works</a></li>
+                    </ul>
+                </div>
+    
+                <!-- Resources -->
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Resources</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-blue-200 hover:text-white">Safety Guide</a></li>
+                        <li><a href="#" class="text-blue-200 hover:text-white">Background Checks</a></li>
+                        <li><a href="#" class="text-blue-200 hover:text-white">Child Care Tips</a></li>
+                        <li><a href="#" class="text-blue-200 hover:text-white">FAQ</a></li>
+                    </ul>
+                </div>
+    
+                <!-- Contact -->
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Contact Us</h3>
+                    <ul class="space-y-2 text-blue-200">
+                        <li class="flex items-center">
+                            <svg class="h-5 w-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12,2C7.589,2,4,5.589,4,9.995C4,16.995,11,21.5,12,22c1-0.5,8-5,8-12.005C20,5.589,16.411,2,12,2z M12,14c-2.21,0-4-1.79-4-4s1.79-4,4-4s4,1.79,4,4S14.21,14,12,14z"/>
+                            </svg>
+                            Cape Town, South Africa
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="h-5 w-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M20,4H4C2.896,4,2,4.896,2,6v12c0,1.104,0.896,2,2,2h16c1.104,0,2-0.896,2-2V6C22,4.896,21.104,4,20,4z M20,8.7l-8,5.334L4,8.7V6.297l8,5.333l8-5.333V8.7z"/>
+                            </svg>
+                            contact@safiricare.com
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="h-5 w-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M20,10.999h2C22,5.869,18.127,2,12.99,2v2C17.052,4,20,6.943,20,10.999z M13,8c2.103,0,3,0.897,3,3h2c0-3.225-1.775-5-5-5V8zm3.422,5.443c-0.419-0.742-0.885-0.978-1.288-0.978c-0.472,0-0.789,0.291-0.995,0.552l-0.161,0.195c-0.244,0.283-0.444,0.399-0.741,0.399c-0.531,0-0.856-0.294-1.003-0.533L11,12.037c-0.324-0.58-0.902-0.933-1.53-0.933c-0.197,0-0.398,0.032-0.595,0.096L3.82,13.112c-0.081,0.026-0.157,0.06-0.22,0.107C2.235,14.051,2,15.018,2,16.003C2,19.314,4.686,22,7.997,22h8.006C19.314,22,22,19.314,22,16.003c0-1.4-0.465-2.723-1.342-3.795L13.422,13.443z"/>
+                            </svg>
+                            +27 (0) 21 123 4567
+                        </li>
+                    </ul>
+                </div>
+            </div>
+    
+            <!-- Bottom Bar -->
+            <div class="border-t border-blue-700 mt-12 pt-8 text-center text-blue-200">
+                <p>&copy; 2025 SafiriCare. All rights reserved.</p>
+                <div class="mt-2 space-x-4">
+                    <a href="#" class="hover:text-white">Privacy Policy</a>
+                    <span>|</span>
+                    <a href="#" class="hover:text-white">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
