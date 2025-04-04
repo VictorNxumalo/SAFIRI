@@ -79,3 +79,4 @@ AI Matching: Algorithm-driven provider recommendations based on user needs.
 Community Hubs: Partner with spaza shops and libraries for offline bookings.
 
 SafiriCare redefines how South Africans access critical services—combining technology with community trust to build a safer, more efficient marketplace. 🌍✨
+Release Tag: v1.0.0 (Core backend setup and service listing infrastructure).
