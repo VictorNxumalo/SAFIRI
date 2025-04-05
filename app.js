@@ -4,6 +4,9 @@ const client = new MongoClient(uri);
 require('dotenv').config(); // Load environment variables  
 const connectDB = require('./config/db');  
 const express = require('express');  
+const authRoutes = require("./routes/auth");  
+const { protect, authorize } = require("./middleware/auth");  
+
 
 async function run() {  
   try {  
@@ -23,6 +26,17 @@ const app = express();
 
 // Connect to MongoDB  
 connectDB();  
+// Middleware  
+app.use(express.json());  // Parse JSON bodies  
+
+// Routes  
+app.use("/api/v1/auth", authRoutes);  
+
+// Protected route example (admin-only)  
+app.get("/api/v1/admin", protect, authorize("admin"), (req, res) => {  
+  res.status(200).json({ success: true, user: req.user });  
+});  
+
 
 // Start server  
 const PORT = process.env.PORT || 5000;  

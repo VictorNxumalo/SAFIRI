@@ -1,6 +1,13 @@
-node_modules/
-# .gitignore  
-.env  
-node_modules/  
-# .env  
-MONGODB_URI=mongodb://Victor-Founder:0202035134081aA*@34.241.0.21:27017/SafiriCareDB?retryWrites=true&w=majority  
+# Environment variables
+.env
+.env.local
+.env.*.local
+.DS_Store
+
+# Dependencies
+/node_modules
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
